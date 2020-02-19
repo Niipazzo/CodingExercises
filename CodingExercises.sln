@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests\Tests.csproj", "{54129157-6412-473F-9B9A-BF196D682060}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code", "Code\Code\Code.csproj", "{7A9963C6-4154-4852-8A6C-69AB8B78E022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "App\ConsoleApp1\ConsoleApp1.csproj", "{9165DD80-D18A-4EF0-90A7-17D28F563915}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54129157-6412-473F-9B9A-BF196D682060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54129157-6412-473F-9B9A-BF196D682060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54129157-6412-473F-9B9A-BF196D682060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54129157-6412-473F-9B9A-BF196D682060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9963C6-4154-4852-8A6C-69AB8B78E022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9963C6-4154-4852-8A6C-69AB8B78E022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9963C6-4154-4852-8A6C-69AB8B78E022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9963C6-4154-4852-8A6C-69AB8B78E022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9165DD80-D18A-4EF0-90A7-17D28F563915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9165DD80-D18A-4EF0-90A7-17D28F563915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9165DD80-D18A-4EF0-90A7-17D28F563915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9165DD80-D18A-4EF0-90A7-17D28F563915}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0AB6768-EACB-4214-B8FE-3B275627E703}
+	EndGlobalSection
+EndGlobal
