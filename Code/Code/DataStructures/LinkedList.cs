@@ -1,22 +1,30 @@
-﻿using System.Linq;
-using cg = System.Collections.Generic;
+﻿using System;
+using System.Linq;
 
 namespace Niipazzo.DataStructures
 {
+    /// <summary>
+    /// Simple example of LinkedList (single-linked)
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class LinkedList<T>
     {
-        private cg.List<LinkedListNode<T>> Nodes { get; }
+        private int capacity = 4;
+
+        private LinkedListNode<T>[] Nodes { get; }
 
         public LinkedList()
         {
-            Nodes = new cg.List<LinkedListNode<T>>();
+            Nodes = new LinkedListNode<T>[capacity];
         }
+
+        public int Count { get; private set; } = 0;
 
         public LinkedListNode<T> First
         {
             get
             {
-                return Nodes.FirstOrDefault();
+                return Count > 0 ? Nodes[0] : null;
             }
         }
 
@@ -24,18 +32,25 @@ namespace Niipazzo.DataStructures
         {
             get
             {
-                return Nodes.LastOrDefault();
+                return Count > 0 ? Nodes[Count - 1] : null;
             }
         }
 
-        public void Add(LinkedListNode<T> node)
+        public void Add(T value)
         {
-            node.Next = null; //sanity check
-            if (Last != null)
+            Add(new LinkedListNode<T>(value));
+        }
+
+        private void Add(LinkedListNode<T> node)
+        {
+            if (node.Next != null) throw new ArgumentException("New node has to have Next=null"); //sanity check
+
+            if (Last != null) // If last not null then update next
             {
                 Last.Next = node;
             }
-            Nodes.Add(node);
+
+            Nodes[Count++] = node;
         }
     }
 
@@ -43,5 +58,10 @@ namespace Niipazzo.DataStructures
     {
         public T Data { get; set; }
         public LinkedListNode<T> Next { get; set; }
+
+        public LinkedListNode(T data)
+        {
+            Data = data;
+        }
     }
 }

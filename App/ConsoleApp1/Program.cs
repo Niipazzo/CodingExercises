@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
@@ -6,20 +7,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var a = new A();
-            Test(ref a);
-            Console.WriteLine(a.a);
+            var list = new List<int>();
+            var arr = list.ToArray();
+            Console.WriteLine(arr[3]);
             Console.Read();
-        }
-
-        private static void Test(ref A a)
-        {
-            a = new A() { a = 777 };
-        }
-
-        class A
-        {
-            public int a = 666;
         }
     }
 }
