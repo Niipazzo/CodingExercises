@@ -11,7 +11,7 @@ namespace Niipazzo.DataStructures
     {
         private int capacity = 4;
 
-        private LinkedListNode<T>[] Nodes { get; }
+        private LinkedListNode<T>[] Nodes { get; set; }
 
         public LinkedList()
         {
@@ -48,6 +48,15 @@ namespace Niipazzo.DataStructures
             if (Last != null) // If last not null then update next
             {
                 Last.Next = node;
+            }
+
+            //if array is full double capacity and copy existing to new
+            if (Count == capacity)
+            {
+                capacity *= 2;
+                var newArr = new LinkedListNode<T>[capacity];
+                Array.Copy(Nodes, 0, newArr, 0, Nodes.Length);
+                Nodes = newArr;
             }
 
             Nodes[Count++] = node;

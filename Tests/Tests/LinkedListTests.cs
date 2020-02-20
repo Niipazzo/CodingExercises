@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Niipazzo.DataStructures;
+using System;
 
 namespace Tests
 {
@@ -47,14 +48,13 @@ namespace Tests
         }
 
         [TestMethod]
-        public void OneElementCountOne()
+        public void NElementsCountN()
         {
-            var list = GetListWithNElements(1);
+            var rand = new Random();
+            var randomCount = rand.Next(100);
+            var list = GetListWithNElements(randomCount);
 
-            var expected = 1;
-            var actual = list.Count;
-
-            Assert.IsTrue(actual == expected, $"Count expected to be { expected } after first insertion, but was { actual }");
+            Assert.AreEqual(randomCount, list.Count);
         }
 
         [TestMethod]
