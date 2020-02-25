@@ -7,7 +7,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            StringPermutations.Test(100);
+            StringPermutations.Test(10);
+
+
             Console.WriteLine("Done");
             Console.Read();
         }

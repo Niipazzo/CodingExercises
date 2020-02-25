@@ -18,7 +18,7 @@ namespace Niipazzo.Exercises
         public bool PrintOccurences { get; set; }
 
         private List<int> Result { get; set; }
-        
+
         public StringPermutations(string small = null, string big = null, bool printOccurences = false)
         {
             //Init with example values from book
@@ -35,7 +35,8 @@ namespace Niipazzo.Exercises
 
         public void Solve()
         {
-            SolveUsingSortArray();
+            //SolveUsingSortArrayAndSequenceEqual();
+            SolveUsingSortArrayAndSelfCompare();
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Niipazzo.Exercises
         /// Big.Length = 50Mil
         /// Avg execution is 8406ms
         /// </summary>
-        private void SolveUsingSortArray()
+        private void SolveUsingSortArrayAndSequenceEqual()
         {
             var result = new List<int>();
             var smallSorted = Small.ToCharArray();
@@ -56,6 +57,43 @@ namespace Niipazzo.Exercises
                 var subStr = Big.Substring(i, smallLength).ToCharArray();
                 Array.Sort(subStr);
                 if (subStr.SequenceEqual(smallSorted))
+                {
+                    //start index of matching substr
+                    result.Add(i);
+                }
+            }
+            Result = result;
+        }
+
+        /// <summary>
+        /// Validchars = "abc"
+        /// Small.Length = 5
+        /// Big.Length = 50Mil
+        /// Avg execution is 4268ms
+        /// </summary>
+        private void SolveUsingSortArrayAndSelfCompare()
+        {
+            var result = new List<int>();
+            var smallSorted = Small.ToCharArray();
+            var smallLength = Small.Length;
+            Array.Sort(smallSorted);
+            var loopEnd = Big.Length - smallLength;
+            for (int i = 0; i <= loopEnd; i++)
+            {
+                var subStr = Big.Substring(i, smallLength).ToCharArray();
+                Array.Sort(subStr);
+
+                var sequenceEqual = true;
+                for (var j = 0; j < subStr.Length; j++)
+                {
+                    if (subStr[j] == smallSorted[j])
+                        continue;
+
+                    sequenceEqual = false;
+                    break;
+                }
+
+                if (sequenceEqual)
                 {
                     //start index of matching substr
                     result.Add(i);
