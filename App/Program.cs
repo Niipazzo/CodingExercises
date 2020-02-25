@@ -9,7 +9,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             var obj = new StringPermutations();
-            obj.Solve();
+            obj.SolveAndRender();
             Console.Read();
         }
     }

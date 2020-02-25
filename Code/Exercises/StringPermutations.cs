@@ -12,8 +12,10 @@ namespace Niipazzo.Exercises
     /// Page: 69
     public class StringPermutations
     {
-        private string Small { get; }
-        private string Big { get; }
+        public string Small { get; }
+        public string Big { get; }
+
+        private List<int> Result { get; set; }
         
         public StringPermutations(string small = null, string big = null)
         {
@@ -22,13 +24,18 @@ namespace Niipazzo.Exercises
             Big = big ?? "cbabadcbbabbcbabaabccbabc";
         }
 
-        public void Solve()
+        public void SolveAndRender()
         {
-            var result = SolveUsingSortArray();
-            RenderResults(result);
+            Solve();
+            Render();
         }
 
-        private List<int> SolveUsingSortArray()
+        public void Solve()
+        {
+            SolveUsingSortArray();
+        }
+
+        private void SolveUsingSortArray()
         {
             var result = new List<int>();
             var smallSorted = Small.ToCharArray();
@@ -45,12 +52,19 @@ namespace Niipazzo.Exercises
                     result.Add(i);
                 }
             }
-            return result;
+            Result = result;
         }
 
-        private void RenderResults(List<int> indexes)
+        public void Render()
         {
-            Console.WriteLine($"Matches found: {indexes.Count}");
+            if (Result == null)
+                Console.WriteLine("Cannot show results before Solve() is called");
+
+            Console.WriteLine($"Matches found: {Result.Count}");
+
+            if (Result.Count == 0)
+                return;
+
             Console.WriteLine(Big);
             var valueChar = '_';
             var useStaticValue = true;
@@ -67,7 +81,7 @@ namespace Niipazzo.Exercises
                 Console.WriteLine(sb.ToString());
             };
 
-            indexes.ForEach(x => write(x));
+            Result.ForEach(x => write(x));
         }
     }
 }
