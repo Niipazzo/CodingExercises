@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Niipazzo.Exercises;
+using System;
 using System.Collections.Generic;
 
 namespace ConsoleApp1
@@ -7,9 +8,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var list = new List<int>();
-            var arr = list.ToArray();
-            Console.WriteLine(arr[3]);
+            var small = "abbc";
+            var big = "cbabadcbbabbcbabaabccbabc";
+            var obj = new StringPermutations(small, big);
+            obj.Solve();
             Console.Read();
         }
     }
