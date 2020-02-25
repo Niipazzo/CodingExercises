@@ -8,9 +8,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var small = "abbc";
-            var big = "cbabadcbbabbcbabaabccbabc";
-            var obj = new StringPermutations(small, big);
+            var obj = new StringPermutations();
             obj.Solve();
             Console.Read();
         }

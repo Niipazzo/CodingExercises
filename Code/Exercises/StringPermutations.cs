@@ -5,26 +5,23 @@ using System.Linq;
 
 namespace Niipazzo.Exercises
 {
+    /// Example: Given a smaller string 5 and a bigger string b, design an algorithm to find all permutations of the shorter string within the longer one.
+    /// Print the location of each permutation
+    /// 
+    /// From book: Cracking coding interview by Gayle Laakmann 2016
+    /// Page: 69
     public class StringPermutations
     {
         private string Small { get; }
         private string Big { get; }
         
-        public StringPermutations(string small, string big)
+        public StringPermutations(string small = null, string big = null)
         {
-            Small = small;
-            Big = big;
+            //Init with example values from book
+            Small = small ?? "abbc";
+            Big = big ?? "cbabadcbbabbcbabaabccbabc";
         }
 
-        /// <summary>
-        /// Example: Given a smaller string 5 and a bigger string b, design an algorithm to find all permutations of the shorter string within the longer one.
-        /// Print the location of each permutation
-        /// 
-        /// From book: Cracking coding interview by Gayle Laakmann 2016
-        /// Page: 69
-        /// </summary>
-        /// <param name="small"></param>
-        /// <param name="big"></param>
         public void Solve()
         {
             var result = SolveUsingSortArray();
@@ -55,6 +52,8 @@ namespace Niipazzo.Exercises
         {
             Console.WriteLine($"Matches found: {indexes.Count}");
             Console.WriteLine(Big);
+            var valueChar = '_';
+            var useStaticValue = true;
 
             Action<int> write = (idx) =>
             {
@@ -62,7 +61,8 @@ namespace Niipazzo.Exercises
                 var smallLength = Small.Length;
                 StringBuilder sb = new StringBuilder();
                 sb.Append(new string(separator, idx));
-                sb.Append(Big.Substring(idx, smallLength));
+                var value = useStaticValue ? new string(valueChar, smallLength) : Big.Substring(idx, smallLength);
+                sb.Append(value);
                 sb.Append(new string(separator, Big.Length - idx - smallLength));
                 Console.WriteLine(sb.ToString());
             };
