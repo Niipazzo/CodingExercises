@@ -1,6 +1,5 @@
 ﻿using Niipazzo.Exercises;
 using System;
-using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
@@ -8,8 +7,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var obj = new StringPermutations();
-            obj.SolveAndRender();
+            StringPermutations.Test(100);
+            Console.WriteLine("Done");
             Console.Read();
         }
     }
