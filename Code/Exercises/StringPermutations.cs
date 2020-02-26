@@ -35,17 +35,18 @@ namespace Niipazzo.Exercises
 
         public void Solve()
         {
-            //SolveUsingSortArrayAndSequenceEqual();
-            SolveUsingSortArrayAndSelfCompare();
+            Solve3();
         }
 
         /// <summary>
         /// Validchars = "abc"
-        /// Small.Length = 5
+        /// Small.Length = 100
         /// Big.Length = 50Mil
-        /// Avg execution is 8406ms
+        /// Avg execution is 92000ms
+        /// 
+        /// Uses Array.Sort and SequenceEqual
         /// </summary>
-        private void SolveUsingSortArrayAndSequenceEqual()
+        private void Solve1()
         {
             var result = new List<int>();
             var smallSorted = Small.ToCharArray();
@@ -67,11 +68,13 @@ namespace Niipazzo.Exercises
 
         /// <summary>
         /// Validchars = "abc"
-        /// Small.Length = 5
+        /// Small.Length = 100
         /// Big.Length = 50Mil
-        /// Avg execution is 4268ms
+        /// Avg execution is 82000ms
+        /// 
+        /// Uses Array.Sort and For loop comparison
         /// </summary>
-        private void SolveUsingSortArrayAndSelfCompare()
+        private void Solve2()
         {
             var result = new List<int>();
             var smallSorted = Small.ToCharArray();
@@ -102,6 +105,50 @@ namespace Niipazzo.Exercises
             Result = result;
         }
 
+        /// <summary>
+        /// Validchars = "abc"
+        /// Small.Length = 100
+        /// Big.Length = 50Mil
+        /// Avg execution is 7500ms
+        /// 
+        /// doesnt use substrings to compare
+        /// </summary>
+        private void Solve3()
+        {
+            var result = new List<int>();
+            var smallIndex = new Dictionary<char, int>();
+            var bigIndex = new Dictionary<char, int>();
+            var smallLength = Small.Length;
+
+            Action< Dictionary<char, int>, char> dictionaryAdd = (dic, x) =>
+            {
+                if (!dic.ContainsKey(x))
+                {
+                    dic.Add(x, 0);
+                }
+
+                dic[x] += 1;
+            };
+
+            Small.ForEach(x => dictionaryAdd(smallIndex, x));
+
+            for (int i = 0; i < Big.Length; i++)
+            {
+                dictionaryAdd(bigIndex, Big[i]);
+                if (i - smallLength >= 0 && bigIndex.ContainsKey(Big[i - smallLength]))
+                {
+                    bigIndex[Big[i - smallLength]] -= 1;
+                }
+
+                if (smallIndex.All(x => bigIndex.ContainsKey(x.Key) && x.Value == bigIndex[x.Key]))
+                {
+                    result.Add(i - smallLength + 1);
+                }
+            }
+
+            Result = result;
+        }
+
         public void Render()
         {
             if (Result == null)
@@ -114,6 +161,8 @@ namespace Niipazzo.Exercises
 
             if (PrintOccurences)
             {
+                Console.WriteLine(Big);
+
                 var valueChar = '_';
                 var useStaticValue = true;
 
@@ -133,10 +182,8 @@ namespace Niipazzo.Exercises
             }
         }
 
-        public static void Test(int numberOfRuns, string validChars = "abc")
+        public static void Test(int numberOfRuns, string validChars = "abc", int smallLength = 5, int bigLength = 50000000)
         {
-            var smallLength = 5;
-            var bigLength = 50000000;
             var elapsedList = new List<long>(numberOfRuns);
 
             Enumerable.Range(1, numberOfRuns).ForEach(x =>
