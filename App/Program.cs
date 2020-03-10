@@ -11,7 +11,9 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            IsUnique.Test();
+            var c = new CheckPermutation("iddqd", "iqddddddddddddddddddd");
+            c.Solve();
+            Console.WriteLine(c.Result);
 
             Console.WriteLine("Done");
             Console.Read();
