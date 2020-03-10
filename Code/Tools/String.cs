@@ -7,7 +7,7 @@ namespace Niipazzo.Tools
 {
     public class String
     {
-        const string Alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        public const string Alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         public static string RandomString(string validChars, int length)
         {

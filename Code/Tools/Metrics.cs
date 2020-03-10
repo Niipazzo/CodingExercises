@@ -14,7 +14,7 @@ namespace Niipazzo.Tools
             if (!noRender)
                 testSubject.Render();
 
-            Console.WriteLine($"Time taken to solve: {sw.ElapsedMilliseconds}ms");
+            //Console.WriteLine($"Time taken to solve: {sw.ElapsedMilliseconds}ms");
 
             return sw.ElapsedMilliseconds;
         }
