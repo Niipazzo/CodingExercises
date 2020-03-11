@@ -1,4 +1,5 @@
 ﻿using Niipazzo.Exercises;
+using Niipazzo.Exercises.One;
 using Niipazzo.Tools;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            var c = new CheckPermutation("iddqd", "iqddddddddddddddddddd");
-            c.Solve();
-            Console.WriteLine(c.Result);
+            //var result = "Mr John Smith    ".Urlify(13); //1.3 Urlify
 
             Console.WriteLine("Done");
             Console.Read();
